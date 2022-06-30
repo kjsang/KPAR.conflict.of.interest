@@ -1,0 +1,2 @@
+# KPAR.conflict.of.interest
+ 
