@@ -429,6 +429,19 @@ topics %>%
 
 # 5.5.2. 토픽수 설정 ---------------------------------------
 
+#### 5.6.2. 토픽 수 결정
+# devtools::install_github("nikita-moor/ldatuning")
+citation("ldatuning")
+result <- ldatuning::FindTopicsNumber(
+  data_dtm,
+  topics = seq(from = 2, to = 20, by = 1),
+  metrics = c("Griffiths2004", "CaoJuan2009", "Arun2010", "Deveaud2014"),
+  method = "Gibbs",
+  control = list(seed = 486),
+  mc.cores = 2L,
+  verbose = TRUE
+)
+ldatuning::FindTopicsNumber_plot(result)
 
 # 5.5.3. 토픽모델링: 토픽 수 9개 ------------------------------
 
