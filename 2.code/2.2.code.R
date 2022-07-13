@@ -11,7 +11,8 @@ pacman::p_load(
   ggpmisc, # 시계열 시각화
   ggraph, # 네트워크 분석
   widyr, # 단어쌍 
-  tidygraph
+  tidygraph,
+  ggthemes
 )
 
 # 1. 데이터 불러오기 --------------------------------------------
@@ -452,7 +453,9 @@ data_topic_terms %>%
   facet_wrap(~ topic, scales = "free") +
   scale_y_reordered() +
   ylab("단어") +
-  xlab("베타값(beta)") -> data_topic_토픽모델링
+  xlab("베타값(beta)") +
+  theme_few() +
+  scale_fill_brewer("topic", palette="Set1") -> data_topic_토픽모델링
 data_topic_토픽모델링
 
 # 5.5.4. 시기별 누적 토픽수 -----------------------------------
@@ -475,15 +478,21 @@ data_gamma %>%
 # 시기별 토픽: 감마값
 data_gamma_visualization %>% 
   ggplot(aes(year, sum, fill = topic, label = sum)) +
-  geom_bar(position = "stack", stat = "identity") -> data_gamma_시기별토픽
+  geom_bar(position = "stack", stat = "identity") +
+  theme_few() +
+  scale_fill_brewer("topic", palette="Set1") +
+  ylab("감마값(gamma)") +
+  xlab("시기") -> data_gamma_시기별토픽
 data_gamma_시기별토픽
 
 # 시기별 토픽: 감마값 비율 그래프 
 data_gamma_visualization %>% 
   ggplot(aes(year, sum, fill = topic, label = sum)) +
   geom_bar(position = "fill", stat = "identity") +
-  ylab("%") +
-  xlab("year")-> data_gamma_시기별토픽_비율
+  theme_few() +
+  scale_fill_brewer("topic", palette="Set1") +
+  ylab("비중(%)") +
+  xlab("시기")-> data_gamma_시기별토픽_비율
 data_gamma_시기별토픽_비율
 
 # 6. 최종 시각화 정리 ----------------------------------------
