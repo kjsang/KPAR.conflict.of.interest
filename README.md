@@ -18,7 +18,7 @@ Keywords: Multiple Stream Framework, Conflict-of-Interest Prevention Act, Text M
 Kim Jusang(1st Author) & Chang Hyunjoo(Corresponding Author)
 
 ## 2. Requirements
-본 분석은 `MacOS Big Sur(11.5.1 version)`에서 `R(4.1.3 version)` 및 `Rstudio(1.4.1717 version)`으로 진행되었음을 알립니다. `Windows` 환경의 경우 font 오류 등의 문제로 코드상 문제가 발생할 수 있습니다. `MacOS` 환경에서 구동해주시면 감사하겠습니다. 분석결과에 대한 자세한 내용은 논문 원본을 참조해주세요.
+본 분석은 `MacOS Big Sur(11.5.1 version)`에서 `R(4.1.0 version)` 및 `Rstudio(1.4.1717 version)`으로 진행되었음을 알립니다. `Windows` 환경의 경우 font 오류 등의 문제로 코드상 문제가 발생할 수 있습니다. `MacOS` 환경에서 구동해주시면 감사하겠습니다. 분석결과에 대한 자세한 내용은 논문 원본을 참조해주세요.
 
 ### 2.1. 웹크롤링 코드
 크롤링 코드 실행을 위해 우선적으로 `KPAR.conflict.of.interest.Rproj`를 실행한 후 `2.code//crawling.R` 을 실행해주세요.  
