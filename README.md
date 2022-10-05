@@ -174,13 +174,22 @@ tibble(
   perplex = map_dbl(data_lda, perplexity)
 ) -> data_lda_prep
 
-data_lda_prep %>% 
-  ggplot(mapping = aes(x = k, 
-                       y = perplex)) +
-  geom_point() +
-  geom_line() +
-  ggplot2::geom_vline(xintercept = 9, size = 1, color = 'red', alpha = 0.7, linetype = 2) -> data_lda_엘보우
-data_lda_엘보우
+# 5.5.2. 토픽수 설정 ---------------------------------------
+
+#### 5.6.2. 토픽 수 결정
+# devtools::install_github("nikita-moor/ldatuning")
+citation("ldatuning")
+result <- ldatuning::FindTopicsNumber(
+  data_dtm,
+  topics = seq(from = 2, to = 20, by = 1),
+  metrics = c("Griffiths2004", "CaoJuan2009", "Arun2010", "Deveaud2014"),
+  method = "Gibbs",
+  control = list(seed = 486),
+  mc.cores = 2L,
+  verbose = TRUE
+)
+ldatuning::FindTopicsNumber_plot(result)
+
 
 data_lda <- LDA(data_dtm, k=9, control=list(seed=486))
 data_lda %>% 
